@@ -1,0 +1,100 @@
+BEGIN TRANSACTION;
+CREATE TABLE IF NOT EXISTS `Teachers` (
+	`ID_Teacher`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	`Teacher_Name`	TEXT NOT NULL,
+	`Teacher_Surname`	TEXT NOT NULL,
+	`Teacher_Age`	INTEGER NOT NULL,
+	`Password`	TEXT NOT NULL
+);
+INSERT INTO `Teachers` VALUES (1,'Orli','Gallagher',48,'25d55ad283aa400af464c76d713c07ad');
+INSERT INTO `Teachers` VALUES (2,'Alice','Bird',39,'25d55ad283aa400af464c76d713c07ad');
+...
+
+
+
+CREATE TABLE IF NOT EXISTS `Subjects` (
+	`ID_Subject`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	`Subject`	TEXT NOT NULL
+);
+INSERT INTO `Subjects` VALUES (1,'Biology');
+INSERT INTO `Subjects` VALUES (2,'Computer Science');
+...
+
+CREATE TABLE IF NOT EXISTS `Students` (
+	`ID_Student`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	`Student_Name`	TEXT NOT NULL,
+	`Student_Surname`	TEXT NOT NULL,
+	`Student_Age`	INTEGER NOT NULL,
+	`Password`	TEXT NOT NULL DEFAULT "12345678"
+);
+INSERT INTO `Students` VALUES (1,'Kimberly','Newton',18,'25d55ad283aa400af464c76d713c07ad');
+INSERT INTO `Students` VALUES (2,'Blossom','Adams',19,'b6f74a2411057b37778854d1fdadc642');
+...
+
+CREATE TABLE IF NOT EXISTS `Student_Group` (
+	`ID_Student_Group`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	`Group_id`	INTEGER NOT NULL,
+	`Student_id`	INTEGER NOT NULL,
+	FOREIGN KEY(`Student_id`) REFERENCES `Students`(`ID_Student`),
+	FOREIGN KEY(`Group_id`) REFERENCES `Groups`(`ID_Group`)
+);
+INSERT INTO `Student_Group` VALUES (1,1,1);
+INSERT INTO `Student_Group` VALUES (2,1,2);
+...
+
+CREATE TABLE IF NOT EXISTS `Periods` (
+	`ID_Period`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	`Start`	CHAR ( 4 ) NOT NULL
+);
+INSERT INTO `Periods` VALUES (1,'0835');
+INSERT INTO `Periods` VALUES (2,'0945');
+...
+
+CREATE TABLE IF NOT EXISTS `Lessons` (
+	`ID_Lesson`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	`Group_id`	INTEGER NOT NULL,
+	`Teacher_id`	INTEGER NOT NULL,
+	`Period_id`	INTEGER NOT NULL,
+	`Day`	TEXT NOT NULL CHECK(Day IN ( "Monday" , "Tuesday" , "Wednesday" , "Thursday" , "Friday" )),
+	FOREIGN KEY(`Group_id`) REFERENCES `Groups`(`ID_Group`),
+	FOREIGN KEY(`Teacher_id`) REFERENCES `Teachers`(`ID_Teacher`),
+	FOREIGN KEY(`Period_id`) REFERENCES `Periods`(`ID_Period`)
+);
+INSERT INTO `Lessons` VALUES (1,1,1,1,'Monday');
+INSERT INTO `Lessons` VALUES (2,13,2,1,'Monday');
+...
+
+CREATE TABLE IF NOT EXISTS `Groups` (
+	`ID_Group`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	`Subject_id`	INTEGER NOT NULL,
+	`Group`	TEXT NOT NULL,
+	FOREIGN KEY(`Subject_id`) REFERENCES `Subjects`(`ID_Subject`)
+);
+INSERT INTO `Groups` VALUES (1,1,'L1');
+INSERT INTO `Groups` VALUES (2,1,'U1');
+...
+
+CREATE TABLE IF NOT EXISTS `Grades` (
+	`ID_Grade`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	`Lesson_id`	INTEGER NOT NULL,
+	`Student_id`	INTEGER NOT NULL,
+	`Grade`	TEXT NOT NULL CHECK(Grade IN ( "A*" , "A" , "B" , "C" , "D" , "E" , "U" )),
+	`Date`	TEXT NOT NULL,
+	FOREIGN KEY(`Lesson_id`) REFERENCES `Lessons`(`ID_Lesson`),
+	FOREIGN KEY(`Student_id`) REFERENCES `Students`(`ID_Student`)
+);
+INSERT INTO `Grades` VALUES (1,1,2,'A',18032019);
+
+
+CREATE TABLE IF NOT EXISTS `Attendance` (
+	`ID_Attendance`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE,
+	`Lesson_id`	INTEGER NOT NULL,
+	`Student_id`	INTEGER NOT NULL,
+	`Reason`	TEXT NOT NULL,
+	`Date`	TEXT NOT NULL,
+	FOREIGN KEY(`Student_id`) REFERENCES `Students`(`ID_Student`),
+	FOREIGN KEY(`Lesson_id`) REFERENCES `Lessons`(`ID_Lesson`)
+);
+INSERT INTO `Attendance` VALUES (1,1,2,'Sick',18032019);
+INSERT INTO `Attendance` VALUES (2,16,2,'Sick',19032019);
+COMMIT;

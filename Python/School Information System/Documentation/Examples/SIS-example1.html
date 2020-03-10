@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+<head>
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <style type="text/css">
+td.linenos { background-color: #f0f0f0; padding-right: 10px; }
+span.lineno { background-color: #f0f0f0; padding: 0 5px 0 5px; }
+pre { line-height: 125%; }
+body .hll { background-color: #e6e3c3 }
+body  { background: #fafafa; color: #272822 }
+body .c { color: #75715e } /* Comment */
+body .err { color: #960050; background-color: #1e0010 } /* Error */
+body .k { color: #00a8c8 } /* Keyword */
+body .l { color: #ae81ff } /* Literal */
+body .n { color: #111111 } /* Name */
+body .o { color: #f92672 } /* Operator */
+body .p { color: #111111 } /* Punctuation */
+body .ch { color: #75715e } /* Comment.Hashbang */
+body .cm { color: #75715e } /* Comment.Multiline */
+body .cp { color: #75715e } /* Comment.Preproc */
+body .cpf { color: #75715e } /* Comment.PreprocFile */
+body .c1 { color: #75715e } /* Comment.Single */
+body .cs { color: #75715e } /* Comment.Special */
+body .ge { font-style: italic } /* Generic.Emph */
+body .gs { font-weight: bold } /* Generic.Strong */
+body .kc { color: #00a8c8 } /* Keyword.Constant */
+body .kd { color: #00a8c8 } /* Keyword.Declaration */
+body .kn { color: #f92672 } /* Keyword.Namespace */
+body .kp { color: #00a8c8 } /* Keyword.Pseudo */
+body .kr { color: #00a8c8 } /* Keyword.Reserved */
+body .kt { color: #00a8c8 } /* Keyword.Type */
+body .ld { color: #d88200 } /* Literal.Date */
+body .m { color: #ae81ff } /* Literal.Number */
+body .s { color: #d88200 } /* Literal.String */
+body .na { color: #75af00 } /* Name.Attribute */
+body .nb { color: #111111 } /* Name.Builtin */
+body .nc { color: #75af00 } /* Name.Class */
+body .no { color: #00a8c8 } /* Name.Constant */
+body .nd { color: #75af00 } /* Name.Decorator */
+body .ni { color: #111111 } /* Name.Entity */
+body .ne { color: #75af00 } /* Name.Exception */
+body .nf { color: #75af00 } /* Name.Function */
+body .nl { color: #111111 } /* Name.Label */
+body .nn { color: #111111 } /* Name.Namespace */
+body .nx { color: #75af00 } /* Name.Other */
+body .py { color: #111111 } /* Name.Property */
+body .nt { color: #f92672 } /* Name.Tag */
+body .nv { color: #111111 } /* Name.Variable */
+body .ow { color: #f92672 } /* Operator.Word */
+body .w { color: #272822 } /* Text.Whitespace */
+body .mb { color: #ae81ff } /* Literal.Number.Bin */
+body .mf { color: #ae81ff } /* Literal.Number.Float */
+body .mh { color: #ae81ff } /* Literal.Number.Hex */
+body .mi { color: #ae81ff } /* Literal.Number.Integer */
+body .mo { color: #ae81ff } /* Literal.Number.Oct */
+body .sa { color: #d88200 } /* Literal.String.Affix */
+body .sb { color: #d88200 } /* Literal.String.Backtick */
+body .sc { color: #d88200 } /* Literal.String.Char */
+body .dl { color: #d88200 } /* Literal.String.Delimiter */
+body .sd { color: #d88200 } /* Literal.String.Doc */
+body .s2 { color: #d88200 } /* Literal.String.Double */
+body .se { color: #8045FF } /* Literal.String.Escape */
+body .sh { color: #d88200 } /* Literal.String.Heredoc */
+body .si { color: #d88200 } /* Literal.String.Interpol */
+body .sx { color: #d88200 } /* Literal.String.Other */
+body .sr { color: #d88200 } /* Literal.String.Regex */
+body .s1 { color: #d88200 } /* Literal.String.Single */
+body .ss { color: #d88200 } /* Literal.String.Symbol */
+body .bp { color: #111111 } /* Name.Builtin.Pseudo */
+body .fm { color: #75af00 } /* Name.Function.Magic */
+body .vc { color: #111111 } /* Name.Variable.Class */
+body .vg { color: #111111 } /* Name.Variable.Global */
+body .vi { color: #111111 } /* Name.Variable.Instance */
+body .vm { color: #111111 } /* Name.Variable.Magic */
+body .il { color: #ae81ff } /* Literal.Number.Integer.Long */
+
+  </style>
+</head>
+<body>
+<h2></h2>
+
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">guizero</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">SYSTEM</span> <span class="o">=</span> <span class="n">App</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Example 1&quot;</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="n">SYSTEM</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span> <span class="s2">&quot;Hallo World&quot;</span><span class="p">)</span>
+
+<span class="n">SYSTEM</span><span class="o">.</span><span class="n">display</span><span class="p">()</span>
+</pre></div>
+</td></tr></table></body>
+</html>

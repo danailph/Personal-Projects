@@ -1,0 +1,13 @@
+def shapes():
+    fill (-65536)
+    ellipse (40,40,70,70)
+    fill (-27136)
+    ellipse (120,40,70,70)
+    fill (-256)
+    ellipse (200,40,70,70)
+    fill (-16776961)
+    ellipse (280,40,70,70)
+    fill (-2)
+    ellipse (360,40,70,70)
+    fill (-16711936)
+    ellipse (440,40,70,70)
